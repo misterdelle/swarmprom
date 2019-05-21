@@ -15,6 +15,8 @@ configs:
     file: ./caddy/Caddyfile
   dockerd_config:
     file: ./dockerd-exporter/Caddyfile
+  prometheus_config:
+    file: ./prometheus/conf/prometheus.yml
   node_rules:
     file: ./prometheus/rules/swarm_node.rules.yml
   task_rules:
@@ -147,7 +149,7 @@ services:
           memory: 64M
 
   prometheus:
-    image: misterdelle/swarmprom-prometheus:v2.5.0
+    image: stefanprodan/swarmprom-prometheus:v2.5.0
     networks:
       - net
     command:
@@ -157,6 +159,8 @@ services:
     volumes:
       - prometheus:/prometheus
     configs:
+      - source: prometheus_config
+        target: /etc/prometheus/prometheus.yml
       - source: node_rules
         target: /etc/prometheus/swarm_node.rules.yml
       - source: task_rules
