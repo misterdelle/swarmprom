@@ -6,7 +6,7 @@ networks:
     attachable: true
 
 volumes:
-    prometheus_data: {}
+    prometheus: {}
     grafana: {}
     alertmanager: {}
 
@@ -147,7 +147,7 @@ services:
           memory: 64M
 
   prometheus:
-    image: stefanprodan/swarmprom-prometheus:v2.5.0
+    image: misterdelle/swarmprom-prometheus:v2.5.0
     networks:
       - net
     command:
@@ -155,8 +155,7 @@ services:
       - '--storage.tsdb.path=/prometheus'
       - '--storage.tsdb.retention=24h'
     volumes:
-      - ./prometheus/:/etc/prometheus/
-      - prometheus_data:/prometheus
+      - prometheus:/prometheus
     configs:
       - source: node_rules
         target: /etc/prometheus/swarm_node.rules.yml
@@ -204,3 +203,4 @@ services:
       interval: 5s
       timeout: 1s
       retries: 5
+
