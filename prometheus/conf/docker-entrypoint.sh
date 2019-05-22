@@ -39,7 +39,7 @@ done
 
 fi
 
-mv /tmp/prometheus.yml /etc/prometheus/prometheus.yml
+mv /tmp/prometheus.yml /etc/prometheus/prometheus-runtime.yml
 mv /tmp/weave-cortex.yml /etc/prometheus/weave-cortex.yml
 
 set -- /bin/prometheus "$@"
