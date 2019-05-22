@@ -894,7 +894,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum without(instance)(rate(kafka_server_brokertopicmetrics_messagesin_total{job=~\"kafka.*\",topic!=\"\"}[5m]))",
+          "expr": "sum without(instance,job)(rate(kafka_server_brokertopicmetrics_messagesin_total{job=~\"kafka.*\",topic!=\"\"}[5m]))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{topic}}",
@@ -985,7 +985,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum without(instance)(rate(kafka_server_brokertopicmetrics_bytesin_total{job=~\"kafka.*\",topic!=\"\"}[5m]))",
+          "expr": "sum without(instance,job)(rate(kafka_server_brokertopicmetrics_bytesin_total{job=~\"kafka.*\",topic!=\"\"}[5m]))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{topic}}",
@@ -1076,7 +1076,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum without(instance)(rate(kafka_server_brokertopicmetrics_bytesout_total{job=~\"kafka.*\",topic!=\"\"}[5m]))",
+          "expr": "sum without(instance,job)(rate(kafka_server_brokertopicmetrics_bytesout_total{job=~\"kafka.*\",topic!=\"\"}[5m]))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{topic}}",
@@ -1431,5 +1431,5 @@
   "timezone": "browser",
   "title": "Kafka & Zookeeper Overview",
   "uid": "9RvjUo5ik",
-  "version": 5
+  "version": 4
 }
